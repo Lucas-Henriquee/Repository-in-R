@@ -1,0 +1,15 @@
+idade <- c(20, 20, 22, 24, 21, 23, 19, 20, 20)
+sexo <- c("F", "M", "M", "F", "F", "M", "F", "F", "M")
+
+id <- c("Josi", "Lucas", "Gabriel", "Isabella", "Milena", "Gabriel A", "Kailany", "Francielle", "Ramon")
+
+str(idade)
+length(idade)
+
+vazio <- NULL
+str(vazio)
+length(vazio)
+
+
+str(sexo)
+length(sexo)
