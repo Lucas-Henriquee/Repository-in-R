@@ -1,0 +1,30 @@
+---
+title: "aula04"
+author: "Lucas Henrique"
+date: "2024-04-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introdução
+
+## Latex
+
+### Letras Gregas
+
+o valor do nível de significância é  $\alpha = 0.8$. 
+
+$$
+\bar{x} = \frac{\sum_{i=1}^n x_i}{n}
+$$
+\begin{align}
+  e^x & = \sum_{n=0}^\infty \frac{x^n}{n!}
+ \\
+  \Gamma(x) & = \int_0^\infty t^{x-1} e^{-t} 
+
+\end{align}
+
+
