@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Introdução}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}A biblioteca iris}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Representação de equações matemáticas com o LaTex}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Conjunto de dados iris}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Operações com o conjunto de dados sobre a largura da pétala}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Plot do gráfico e da tabela das soluções}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Comandos utilizados para o plot do gráfico}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Representação de equações com LaTex}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Equações Matemáticas}{6}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Fórmula de Bhaskara:}{6}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Propriedade de somatório:}{6}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Limites notáveis:}{6}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Média amostral:}{6}{subsubsection.3.1.4}%
+\contentsline {section}{\numberline {4}Considerações finais}{7}{section.4}%
+\contentsline {section}{\numberline {5}Links}{8}{section.5}%

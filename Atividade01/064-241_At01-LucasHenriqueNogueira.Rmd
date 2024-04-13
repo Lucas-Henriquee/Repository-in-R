@@ -1,0 +1,304 @@
+---
+title: "Atividade 01 – Relatórios Técnicos em R Markdown"
+author: "Lucas Henrique Nogueira"
+date: "2024-04-12"
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    highlight: zenburn
+    citation_package: natbib
+    latex_engine: pdflatex
+line-height: 1.5em
+fontsize: 12pt
+font-family: times new roman
+subtitle: Trabalhando com o conjunto de dados iris e com equações em LaTeX.
+---
+
+\newpage
+
+# Introdução
+## A biblioteca iris
+
+$~~$O dataframe "iris" é um conjunto de dados clássico na linguagem R que contém informações sobre características das flores da íris. Esse conjunto de dados é frequentemente utilizado em análises estatísticas, visualização de dados e aprendizado de máquina para demonstrar técnicas de exploração e modelagem de dados.
+
+\quad  
+  Diante disso, o objetivo proposto será a abordagem de operações básicas nessa biblioteca tais como:
+
+    - O cálculo da média, do menor e do maior valor da largura da pétala
+    - O plot de um gráfico e uma tabelas com os resultados obtidos
+    - A apresentação dos comandos utilizados para criação do gráfico
+  
+  
+\quad
+## Representação de equações matemáticas com o LaTex
+$~~$O LaTeX é um sistema de preparação de documentos amplamente utilizado para criar documentos de alta qualidade, especialmente no contexto acadêmico e científico. Ele oferece um ambiente poderoso e flexível para produzir documentos bem formatados, como artigos, relatórios, teses, livros, apresentações entre outros.
+
+\quad
+  Diante disso, o objetivo proposto será a representação das seguintes equações em LaTex:
+  
+    - Fórmula de Bhaskara
+    - Propriedades de Somatório
+    - Limites Notáveis
+    - Média Amostral
+  
+\newpage
+# Conjunto de dados iris
+
+## Operações com o conjunto de dados sobre a largura da pétala
+
+\quad
+
+
+\( \rightarrow \) Pétala:
+
+*   Média da largura: 1.199
+*   Menor valor da largura: 0.100
+*   Maior valor da largura: 2.500
+
+
+\quad
+
+\( \rightarrow \) Por espécie:
+    
+*    Setosa: 
+
+      - Média da largura: 0.246
+      - Menor valor da largura: 0.100
+      - Maior valor da largura: 0.600
+  
+      
+*    Versicolor:
+    
+      - Média da largura: 1.326
+      - Menor valor da largura: 1.000
+      - Maior valor da largura: 1.800
+      
+     
+*    Virginica:
+    
+      - Média da largura: 2.026
+      - Menor valor da largura: 1.400
+      - Maior valor da largura: 2.500
+ 
+\ 
+ 
+\ 
+ 
+\ 
+ 
+\
+
+\
+
+## Plot do gráfico e da tabela das soluções
+
+<!--
+
+# Calculando Dados para a tabela codigo
+str(iris)
+media_petala = mean(iris$Petal.Width)
+media_petala
+
+menor_petala = min(iris$Petal.Width)
+menor_petala
+
+
+maior_petala = max(iris$Petal.Width)
+maior_petala
+
+
+media_petala_especie <- tapply(iris$Petal.Width, iris$Species, mean)
+media_petala_especie
+
+menor_petala_especie <- tapply(iris$Petal.Width, iris$Species, min)
+menor_petala_especie
+
+maior_petala_especie <- tapply(iris$Petal.Width, iris$Species, max)
+maior_petala_especie
+
+`-->
+
+\quad
+
+```{r echo = FALSE}
+
+# Criando DataFrame
+dados <- data.frame(
+  Tipo = c("Pétala", "Setosa", "Versicolor", "Virginica"),
+  Média = c(1.199, 0.246, 1.326, 2.026),
+  Menor = c(0.100, 0.100, 1.000, 1.400),
+  Maior = c(2.500, 0.600, 1.800, 2.500)
+)
+
+# Exibindo tabela
+knitr::kable(dados, caption = "Largura de pétala e por espécie")
+```
+
+\quad
+
+```{r echo = FALSE}
+# Calculando a  média, o máximo e  o mínimo da largura da pétala
+# por espécie e colocando em pétala
+
+petala <- aggregate(Petal.Width ~ Species, data = iris, FUN = function(x) 
+              c(mean = mean(x), max = max(x), min = min(x)))
+
+
+
+# Criando gráfico de barras com valores da média, do máximo
+# e do mínimo da largura da pétala por espécie
+
+barplot_height <- t(petala[, -1])  # Ajustando a alturas das barras 
+especies  <- c("Setosa", "Versicolor", "Virginica")
+
+
+# Definindo ascores para média, máximo e mínimo
+
+bar_colors <- c("blue", "green", "red")
+
+
+# Criando o gráfico 
+barplot(barplot_height, 
+        beside = TRUE, 
+        col = bar_colors,
+        ylim = c(0, max(barplot_height) * 1.2), # Definindo limite no eixo y
+        names.arg = especies,
+        
+        # Configurando a legenda no centro do grafico
+        legend.text = c("Média", "Máximo", "Mínimo"),
+        args.legend = list(x = "top", bty = "n+1", inset = c(0, -0.02)), 
+        
+        main = "Gráfico 1: Largura da pétala por espécie",
+        ylab = "Largura da Pétala",
+        xlab = "Espécie")
+
+```
+
+\quad 
+
+* Observações sobre os dados obtidos: 
+
+$~~$ A partir dos dados coletados pode-se observar que a espécie Virginica apresenta
+maiores valores de largura de pétala em relação as demais espécies. A espécie Setosa foi a que apresentou os 
+menores valores em questão. Fato pode ser percebido visualmente pelo Gráfico 1 ou numericamente pela
+Tabela 1.
+
+\quad
+
+## Comandos utilizados para o plot do gráfico
+
+\quad
+
+```{r, eval = FALSE}
+# Calculando a  média, o máximo e  o mínimo da largura da pétala
+# por espécie e colocando em pétala
+
+petala <- aggregate(Petal.Width ~ Species, data = iris, FUN = function(x) 
+              c(mean = mean(x), max = max(x), min = min(x)))
+
+
+# Criando gráfico de barras com valores da média, do máximo
+# e do mínimo da largura da pétala por espécie
+
+barplot_height <- t(petala[, -1])  # Ajustando a alturas das barras 
+especies  <- c("Setosa", "Versicolor", "Virginica")
+
+
+
+# Definindo ascores para média, máximo e mínimo
+
+bar_colors <- c("blue", "green", "red")
+
+
+# Criando o gráfico 
+barplot(barplot_height, 
+        beside = TRUE, 
+        col = bar_colors,
+        ylim = c(0, max(barplot_height) * 1.2), # Definindo limite no eixo y
+        names.arg = especies,
+        
+        # Configurando a legenda no centro do grafico
+        legend.text = c("Média", "Máximo", "Mínimo"),
+        args.legend = list(x = "top", bty = "n+1", inset = c(0, -0.02)), 
+        
+        main = "Gráfico 1: Largura da pétala por espécie",
+        ylab = "Largura da Pétala",
+        xlab = "Espécie")
+
+
+```
+
+\newpage
+# Representação de equações com LaTex
+
+\quad
+
+## Equações Matemáticas
+
+\quad
+
+### Fórmula de Bhaskara:
+
+\quad
+
+$~~$Para o valor de $\Delta$, temos:
+
+\begin{equation}
+\Delta = b^2 - 4.a.c
+\end{equation}
+
+$~~$Para os valores de x, temos: 
+
+\begin{equation}
+x = \frac{-b \pm \sqrt{\Delta}}{2.a}
+\end{equation}
+
+\quad
+
+### Propriedade de somatório:
+
+\[ \sum_{i=1}^{n} \lambda x_i = \lambda \sum_{i=1}^{n} x_i \]
+
+\quad
+
+### Limites notáveis:
+
+\[ \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e \]
+
+\[ \lim_{x \to 0} \frac{\sin x}{x} = 1 \]
+
+\[ \lim_{x \to \infty} \frac{\log_a x}{x} = 0 \quad \forall\:  a > 1, \, a \in \mathbb{R} \]
+
+\quad
+
+### Média amostral:
+
+\[ \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i \]
+
+
+\newpage
+# Considerações finais
+  O trabalho proposto teve como primeira etapa abordar operações básicas de um DataFrame caracteristíco da linguagem R (iris),
+como a média, o maior valor e o menor valor. Além da representação dos resultados através de uma tabela e de um gŕafico, foi possível
+também interpretar os resultados obtidos pelas operações. Em uma última etapa foi levantado também a utilização do LaTex a fim de 
+representar algumas equações matemáticas importantes.
+
+
+\newpage
+# Links
+
+\quad
+
+* Documentação do DataFrame iris:
+\
+$~~$
+<http://www.lac.inpe.br/~rafael.santos/Docs/CAP394/WholeStory-Iris.html>
+
+\quad
+
+* Documentação do LaTex:
+\
+$~~$
+<https://www.learnlatex.org/en/>
