@@ -31,7 +31,7 @@ tmp
 
 
 ## Criando vetor com a função rep com 10 ocorrências de 4
-vet5 <- rep(tmp, times = 4)
+vet5 <- rep(tmp, c(10))
 vet5
 
 

@@ -47,7 +47,7 @@ tmp
 * a) Criando o vetor com (4; 6; 3; 4; 6; 3; … ; 4; 6; 3) no qual há 10 ocorrências de 4.
 
 ```{r echo= FALSE}
-vet5 <- rep(tmp, times = 4)
+vet5 <- rep(tmp, c(10))
 vet5
 ```
 
