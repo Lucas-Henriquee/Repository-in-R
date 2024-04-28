@@ -1,0 +1,168 @@
+---
+title: "Atividade nº 02 - Trabalhando com vetores"
+author: "Lucas Henrique Nogueira"
+date: "28/04/2024"
+output: pdf_document
+---
+
+# Lista de Exercícios
+\quad
+
+## 1) Criando vetores:
+
+* a) Criando vetor com os valores de 1 à 20: (1; 2; 3; ...; 19; 20)
+
+```{r echo = FALSE}
+vet1 <- 1:20
+vet1
+```
+
+
+* b) Criando vetor com os valores de 20 à 1: (20; 19; ...; 2; 1)
+
+```{r echo = FALSE}
+vet2 <- 20:1
+vet2
+```
+
+
+* c) Criando vetor com os valores de 20 à 1 à 20: (1; 2; 3; ...; 19; 20; 19; ...; 1)
+
+```{r echo = FALSE}
+vet3 <- 1:20
+vet3 <- c(vet3, rev(vet3))
+vet3
+```
+
+* d) Criando o vetor e atribuindo o nome de "tmp" a ele: tmp <- (4; 6; 3)
+
+```{r echo= FALSE}
+vet4 <- c(4,6,3)
+tmp <- vet4
+tmp
+```
+\quad
+## 2) Criando vetores com a função rep:
+
+* a) Criando o vetor com (4; 6; 3; 4; 6; 3; … ; 4; 6; 3) no qual há 10 ocorrências de 4.
+
+```{r echo= FALSE}
+vet5 <- rep(tmp, times = 4)
+vet5
+```
+
+* b) Criando o vetor com (4; 6; 3; 4; 6; 3; … ; 4; 6; 3; 4) no qual há 11 ocorrências de 4, 10 ocorrências de 6 e 10 ocorrências de 3.
+
+```{r echo= FALSE}
+vet6 <- rep(tmp, length.out = 31)
+vet6
+```
+
+* c) Criando o vetor com (4; 4; … ; 4; 6; 6; … ; 6; 3; 3; … ; 3) no qual há 10 ocorrências de 4, 20
+ocorrências de 6 e 30 ocorrências de 3.
+
+```{r echo= FALSE}
+vet7 <- rep(tmp, c(10,20,30))
+vet7
+```
+\quad
+## 3) Criando um vetor para os valores de \( e^x \cdot \cos(x) \), para \( x = 3, \, 3.1, \, 3.2, \, \ldots, \, 6 \):
+
+```{r echo= FALSE}
+x <- seq(3, 6, by = 0.1)
+vet8 <- exp(x) * cos(x)
+vet8 
+```
+\quad
+## 4) Criando mais alguns vetores 
+
+* a) \( (0,1^3*0,2^1;\: 0,1^6*0,2^4; ....;\: 0,1^36*0,2^34\))
+
+```{r echo= FALSE}
+expoente <- seq(3, 36, by = 3)
+vet9 <- (0.1^expoente) * (0.2^(expoente - 2))
+vet9
+```
+
+* b) \((2; \: \frac{2^2}{2}; \: \frac{2^3}{3}; \: ....; \: \frac{2^25}{25} )\)
+
+```{r echo= FALSE}
+n <- 1:25
+vet10 <- (2^n)/n
+vet10
+```
+
+\quad
+## 5) Calculando alguns somatórios:
+
+* a) \(\sum\limits_{i=10}^{100} (i^3 + 4i^2)\)
+
+```{r echo= FALSE}
+i_a <- 10:100
+somatorio_a <- sum(i_a^3 + 4*i_a^2)
+somatorio_a
+```
+
+* b) \(\sum\limits_{i=1}^{25} (\frac{2^i}{i} + \frac{3^i}{i^2})\)
+
+```{r echo= FALSE}
+i_b <- 1:25
+somatorio_b <- sum((2 ^ i_b)/i_b + (3 ^ i_b)/i_b^2)
+somatorio_b
+```
+
+\
+
+
+\quad
+## 6) Utilizando a função paste para os seguintes vetores com comprimento de 30:
+
+* a) ("rotulo 1"; "rotulo 2"; ...; "rotulo 30")
+
+```{r echo= FALSE}
+n <- 1:30
+
+vet11 <- paste("rotulo", n)
+vet11
+```
+
+* b) ("fn1"; "fn2"; ...; "fn30")
+
+```{r echo= FALSE}
+vet12 <- paste0("fn", n)
+vet12
+```
+
+\quad
+## 7) Uma maneira de inserir um valor entre dois elementos em uma dada posição de um vetor:
+
+```{r echo= FALSE}
+vet13 <- c(1,2,3,5,6)
+vet13
+posicao <- 3
+vet13 <- append(vet13, 4, after = posicao)
+vet13
+```
+
+\quad
+## 8) Operações com o conjunto de dados juul{ISwR}:
+
+* a) As linhas do DataFrame referentes as garotas entre 7 e 14 anos de idade dadas
+
+```{r echo= FALSE}
+data(juul, package = "ISwR")
+
+linhas <- which(juul$sex == 2 & juul$age >= 7 & juul$age <= 14)
+linhas
+```
+
+* b) A média da variável igf1 para as garotas entre 7 e 14 anos de idade
+
+```{r echo= FALSE}
+data(juul, package = "ISwR")
+
+df <- subset(juul, sex == 2 & age >= 7 & age <= 14)
+media<- mean(df$igf1, na.rm = TRUE)
+media
+```
+
