@@ -1,0 +1,17 @@
+x tem 10 elementos: 
+ [1] 10.585529 10.709466  9.890697  9.546503 10.605887  8.182044 10.630099  9.723816  9.715840  9.080678
+y =  10.88375 12.81731 11.37063 11.52022 10.24947 11.8169 10.11364 10.66842 12.12071 11.29872 11.77962 
+==================================
+Teste-t entre x e y
+===============================
+	Welch Two Sample t-test
+
+data:  x and y
+t = -4.1206, df = 18.804, p-value = 0.0005928
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.2078521 -0.7197452
+sample estimates:
+mean of x mean of y 
+ 9.867056 11.330855 
+
