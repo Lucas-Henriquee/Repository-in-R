@@ -1,0 +1,81 @@
+---
+title: "Atividade nº 04 - Importação de Dados e Gráficos"
+author: "Lucas Henrique Nogueira"
+date: "28/05/2024"
+output: pdf_document
+---
+
+# Lista de Exercícios
+
+\quad
+
+## 1) Importação online e local de data frames
+
+* Conjunto de dados utilizados nessa primeira parte da lista foi extraído do link abaixo:
+
+$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ [Census at School](https://www.stat.auckland.ac.nz/~wild/d2i/FutureLearn/Census.at.School.500_ages9-15.csv)
+
+\textbf{Contexto:} O conjunto de dados "Census at School-500.csv" provém do projeto internacional Census at School. Este projeto educacional global tem como objetivo envolver alunos em atividades estatísticas usando dados reais coletados por eles mesmos. Os alunos respondem a uma série de perguntas sobre diversos aspectos de suas vidas, como características físicas, hábitos, preferências e atividades. O objetivo é tornar o aprendizado de estatística mais interessante e relevante, utilizando dados coletados pelos próprios alunos.
+\
+
+* a) Utilizando as funções `read.csv()` e `read.table()` para importar os dados diretamente da URL:
+
+```{r}
+url <- "https://www.stat.auckland.ac.nz/~wild/d2i/FutureLearn/Census.at.School.500_ages9-15.csv"
+
+census_csv <- read.csv(url)
+```
+
+```{r}
+dim(census_csv)    # Dimensão do conjunto (Linha X Coluna)
+names(census_csv)  # Nomes das variáveis
+
+census_table <- read.table(url, sep = ",", header = TRUE)
+head(census_table)
+```
+\newpage
+
+* b) Utilizando a função `file.choose()` para fazer uma importação local dos dados:
+\
+
+```{r, eval = F}
+census_local <- read.csv(file.choose())  # Importando o arquivo local do diretório do PC.
+```
+
+```{r, eval = F}
+dim(census_local)    # Dimensão do conjunto (Linha X Coluna)
+```
+
+```{r, echo= F}
+dim(census_csv)
+```
+
+```{r, eval = F}
+names(census_local)    # Nomes das variáveis
+```
+
+```{r, echo = F}
+names(census_csv)
+```
+
+```{r, eval = F}
+census_table2 <- read.table(file.choose(), sep = ",", header = TRUE)
+head(census_table2)
+```
+
+```{r, echo = F}
+census_table <- read.table(url, sep = ",", header = TRUE)
+head(census_table)
+```
+\
+
+\textbf{Observação:} A função `file.choose()` oferece uma maneira simples e direta para os usuários selecionarem um arquivo no sistema, navegando através das pastas do computador de forma interativa. Porém  como a seleção do arquivo é feita manualmente pelo usuário, não é possível automatizar esse processo em scripts ou tarefas programadas, o que pode limitar a eficiência em cenários de automação, além de ser mais adequada para uso em ambientes interativos, como o RStudio.
+
+\newpage
+## 2) Operações com o conjunto de dados `skulls{ade4}`.
+
+\qquad
+
+* a) Manipulando os dados do conjunto de dados:
+
+    - Renomeando as variáveis: V1 por ACr, V2 por BBr, V3 por BAl e V4 por ANs.
