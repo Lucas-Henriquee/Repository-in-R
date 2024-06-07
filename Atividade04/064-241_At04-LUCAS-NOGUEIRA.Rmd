@@ -76,6 +76,267 @@ head(census_table)
 
 \qquad
 
+
+```{r}
+  data(skulls, package = "ade4")
+  head(skulls)
+```
+
 * a) Manipulando os dados do conjunto de dados:
 
     - Renomeando as variáveis: V1 por ACr, V2 por BBr, V3 por BAl e V4 por ANs.
+    
+```{r}
+  names(skulls) <- c("ACr", "BBr", "BAl", "ANs")
+  head(skulls)
+```
+
+    - Criando uma variável categórica `periodo`:
+    
+```{r}
+  periodo <- factor(rep(1:5, each = 30), labels = c("período pré-dinástico primitivo", 
+                                                  "período pré-dinástico antigo", 
+                                                  "12ª e 13ª dinastias", 
+                                                  "período Ptolemaico", 
+                                                  "período Romano"))
+  skulls$periodo <- periodo
+  head(skulls)
+```
+\newpage
+    - Criando uma variável quantidade `idade`:
+
+```{r}
+  idade <- rep(c(-4000, -3300, -1850, -200, 150), each = 30)
+    
+  skulls$idade <- idade
+  head(skulls)
+```
+
+\
+
+* b) Ampliando a análise exploratória desses dados:
+
+  - Calculando a média de cada uma das medidas por período:
+  
+```{r}
+  medias_periodo <- aggregate(cbind(ACr, BBr, BAl, ANs) ~ periodo, data = skulls, mean)
+  rownames(medias_periodo) <- c("Primitivo", "Antigo", "Dinastias", "Ptolemaico", "Romano")
+      
+  medias_periodo    # Matriz (tabela) 
+```
+
+  - Gráfico de linhas das médias de cada uma das medidas por idade:
+
+```{r}
+  medias_idade <- aggregate(cbind(ACr, BBr, BAl, ANs) ~ idade, data = skulls, mean)
+
+  plot(medias_idade$idade, medias_idade$ACr, type = "o", col = "blue",
+       ylim = range(medias_idade[,2:5]), xlab = "Idade", ylab = "Médias das Medidas",
+       main ="Médias das Medidas ao longo do Tempo")
+  lines(medias_idade$idade, medias_idade$BBr, type = "o", col = "red")
+  lines(medias_idade$idade, medias_idade$BAl, type = "o", col = "green")
+  lines(medias_idade$idade, medias_idade$ANs, type = "o", col = "purple")
+
+  legend("topright", legend = c("ACr", "BBr", "BAl", "ANs"), 
+         col = c("blue", "red", "green", "purple"), lty = 1)
+
+```
+
+* c) Conclusão da análise do gráfico:
+
+Visualizando o gráfico das médias das medidas dos crânios ao longo do tempo, podemos observar as seguintes tendências:
+
+1. **ACr (Amplitude máxima do crânio)**:
+   - A linha correspondente à ACr mostra uma variação ao longo dos diferentes períodos. Podemos ver que, do período pré-dinástico primitivo para os períodos subsequentes, há uma ligeira tendência de aumento e depois uma estabilização.
+
+2. **BBr (Altura basilobregmática do crânio)**:
+   - A altura basilobregmática (BBr) também apresenta mudanças ao longo do tempo, com variações menos pronunciadas comparadas à ACr, mas ainda assim com algumas flutuações.
+
+3. **BAl (Comprimento basiloalveolar do crânio)**:
+   - O comprimento basiloalveolar (BAl) dos crânios parece ter uma tendência de aumento gradual ao longo dos períodos históricos, indicando uma possível mudança nas características faciais das populações.
+
+4. **ANs (Altura nasal do crânio)**:
+   - A altura nasal (ANs) apresenta variações significativas, com um aumento visível em alguns períodos e uma leve queda em outros. Esse padrão sugere que as características nasais dos crânios sofreram mudanças ao longo do tempo.
+
+Com base nas observações feitas a partir do gráfico, podemos levantar algumas conjecturas sobre as possíveis razões para as mudanças nas medidas dos crânios ao longo do tempo:
+
+1. **Influências Ambientais e Culturais**:
+   - As variações nas medidas dos crânios podem ser atribuídas a mudanças nos ambientes e práticas culturais das populações ao longo dos diferentes períodos históricos. Por exemplo, alterações na dieta, práticas de trabalho e condições de vida podem ter impactado o desenvolvimento físico das pessoas.
+
+2. **Evolução Biológica**:
+   - As mudanças nas características dos crânios também podem refletir um processo de evolução biológica, onde diferentes pressões seletivas ao longo do tempo resultaram em alterações nas características físicas das populações.
+
+3. **Migrações e Misturas Populacionais**:
+   - A chegada de novas populações e a mistura genética com grupos locais podem ter introduzido novas características físicas, resultando em mudanças observáveis nas medidas dos crânios.
+
+## 3) Operações com os comandos `scan()` e `lower.tri()`.
+
+```{r}
+  dados <- scan("E9-14.DAT")
+  dados
+
+  n <- 6
+  R <- matrix(0, n, n)
+  R[lower.tri(R, diag = TRUE)] <- dados
+  R <- R + t(R) - diag(diag(R))
+  R
+```
+
+* a) Calculando o traço e o determinante da matriz de  correlações R:
+
+```{r}
+  traco <- sum(diag(R))
+  traco                      # Traço da matriz R.
+
+  determinante <- det(R)
+  determinante               # Determinante da matriz R.
+```
+
+
+* b) Calculando os autovetores com o comando `eigen()` e calculando a  proporção com o traço da matriz R:
+
+```{r}
+  eigen_ <- eigen(R)
+
+  autovetores <- eigen_$vectors
+  autovetores                # Autovetores da matriz R.
+
+  proporcao_autovetores <- autovetores / sum(autovetores)
+  proporcao_autovetores      # Proporção de cada autovetor em relação ao traço.
+```
+
+* c) Comparando o traço da matriz R com a soma de seus autovalores e o determinante da matriz R com o produto de seus autovalores:
+
+```{r}
+  autovalores <- eigen_$values
+  autovalores                # Autovalores da matriz R.
+
+  soma_autovalores <- sum(autovalores)
+
+  soma_autovalores           # Soma dos autovalores da matriz R.
+
+  traco                      # Traço.
+```
+
+\newpage
+
+## 4) Conjunto de dados `cars{datasets}`.
+
+```{r}
+  data(cars)
+```
+
+* a), b) e c) Construindo um gráfico de dispersão de `speed` por `dist`:
+
+```{r}
+  plot(cars$speed, cars$dist, main = "Gráfico de Dispersão: Velocidade vs. Distância",
+  xlab = "Velocidade, em mph", ylab = "Distância de Parada, em ft", col= "red", pch = 17)
+```
+
+\newpage
+* d), e), f), g) e h) Construindo um gráfico e aplicando os modelos linear e quadrático:
+
+```{r}
+  modelo.linear <- lm(dist ~ speed, data = cars)
+
+  plot(cars$speed, cars$dist,
+     xlab = "Velocidade, em mph",
+     ylab = "Distância de parada, em ft",
+     main = "Ajuste Linear e Quadrático: Velocidade vs. Distância de parada")
+  
+  abline(modelo.linear, col = "red", lty = "dotted", lwd = 2)
+  
+  modelo.quadratico <- lm(dist ~ speed + I(speed^2), data = cars)
+  
+  lines(cars$speed, predict(modelo.quadratico), col = "blue", lty = "longdash", lwd = 2)
+  
+  legend("topright", legend = c("Linear", "Quadrático"),
+      col = c("red", "blue"), lty = c("dotted", "longdash"), lwd = 2)
+```
+
+\newpage
+* i), j), k) e l) Construindo o gráfico de resíduos:
+
+```{r}
+  plot(cars$speed, modelo.linear$residuals, xlab = "Velocidade, em mph",
+     ylab = "Resíduos", main = "Gráfico de Resíduos do Ajuste Linear")
+
+  abline(h = 0, col = "blue", lwd = 3)
+  
+  extremos_positivos <- order(modelo.linear$residuals, decreasing = TRUE)[1:2]
+  text(cars$speed[extremos_positivos], modelo.linear$residuals[extremos_positivos],
+       labels = "POS", col = "blue")
+
+  extremo_negativo <- which.min(modelo.linear$residuals)
+  text(cars$speed[extremo_negativo], modelo.linear$residuals[extremo_negativo], 
+       labels = "NEG", col = "red")
+```
+
+\newpage
+
+## 5) Gráfico com função de probabilidade
+
+* a) Aplicando as função `curve()` para apresentar as densidades Beta(2,6), Beta(4,4) e Beta(6,2):
+
+```{r}
+curve(dbeta(x, 2, 6), from = 0, to = 1, ylab = "Densidade", xlab = "x")
+
+curve(dbeta(x, 4, 4), from = 0, to = 1, add = TRUE)
+
+curve(dbeta(x, 6, 2), from = 0, to = 1, add = TRUE)
+```
+
+\newpage
+* b) Adicionando título no gráfico:
+
+```{r}
+curve(dbeta(x, 2, 6), from = 0, to = 1, ylab = "Densidade", xlab = "x")
+
+curve(dbeta(x, 4, 4), from = 0, to = 1, add = TRUE)
+
+curve(dbeta(x, 6, 2), from = 0, to = 1, add = TRUE)
+
+title(expression(f(y) == frac(1, B(a, b)) * y^{a-1} * (1-y)^{b-1}))
+
+```
+
+\newpage
+* c) Adicionando rótulos a cada uma das curvas com a função `text()`:
+
+```{r}
+curve(dbeta(x, 2, 6), from = 0, to = 1, ylab = "Densidade", xlab = "x")
+curve(dbeta(x, 4, 4), from = 0, to = 1, add = TRUE)
+curve(dbeta(x, 6, 2), from = 0, to = 1, add = TRUE)
+
+title(expression(f(y) == frac(1, B(a, b)) * y^{a-1} * (1-y)^{b-1}))
+
+text(0.1, dbeta(0.1, 2, 6) + 0.1, "Beta(2, 6)")
+text(0.5, dbeta(0.5, 4, 4) + 0.1, "Beta(4, 4)")
+text(0.9, dbeta(0.9, 6, 2) + 0.1, "Beta(6, 2)")
+```
+
+\newpage
+* d) Refazendo o gráfico do item (a), adicionando cores e tipos de linha diferentes para cada uma das três curvas:
+
+```{r}
+curve(dbeta(x, 2, 6), from = 0, to = 1, ylab = "Densidade", xlab = "x", col = "blue", lty = 1)
+curve(dbeta(x, 4, 4), from = 0, to = 1, add = TRUE, col = "red", lty = 2)
+curve(dbeta(x, 6, 2), from = 0, to = 1, add = TRUE, col = "green", lty = 3)
+
+title(expression(f(y) == frac(1, B(a, b)) * y^{a-1} * (1-y)^{b-1}))
+
+```
+
+\newpage
+* e) Adicionando legenda sem usar a função `text()`:
+
+```{r}
+curve(dbeta(x, 2, 6), from = 0, to = 1, ylab = "Densidade", xlab = "x", col = "blue", lty = 1)
+curve(dbeta(x, 4, 4), from = 0, to  = 1, add = TRUE, col = "red", lty = 2)
+curve(dbeta(x, 6, 2), from = 0, to = 1, add = TRUE, col = "green", lty = 3)
+
+title(expression(f(y) == frac(1, B(a, b)) * y^{a-1} * (1-y)^{b-1}))
+
+legend("topright", legend = c("Beta(2, 6)", "Beta(4, 4)", "Beta(6, 2)"),
+       col = c("blue", "red", "green"), lty = c(1, 2, 3))
+```
