@@ -2,7 +2,9 @@
 title: "Atividade nº 02 - Trabalhando com vetores"
 author: "Lucas Henrique Nogueira"
 date: "28/04/2024"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 # Lista de Exercícios

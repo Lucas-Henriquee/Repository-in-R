@@ -2,7 +2,11 @@
 title: "Atividade 01 – Relatórios Técnicos em R Markdown"
 author: "Lucas Henrique Nogueira"
 date: "2024-04-12"
-output: 
+output:
+  html_document:
+    toc: true
+    toc_depth: '3'
+    df_print: paged
   pdf_document:
     toc: true
     toc_depth: 3

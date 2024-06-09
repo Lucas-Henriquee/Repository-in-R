@@ -2,7 +2,9 @@
 title: "Atividade nº 03 - Estruturas de Dados em R"
 author: "Lucas Henrique Nogueira"
 date: "25/05/2024"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 # Lista de Exercícios

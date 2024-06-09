@@ -1,8 +1,12 @@
 ---
-title: "RT01: Uso do pacote `ggplot2`"
+title: 'RT01: Uso do pacote `ggplot2`'
 author: "Lucas Henrique Nogueira"
 date: "2024-06-09"
-output: 
+output:
+  html_document:
+    toc: true
+    toc_depth: '3'
+    df_print: paged
   pdf_document:
     toc: true
     toc_depth: 3
