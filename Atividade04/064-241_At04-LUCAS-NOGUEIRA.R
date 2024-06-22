@@ -79,9 +79,11 @@ dados <- scan("E9-14.DAT")
 dados
 
 n <- 6
-R <- matrix(0, n, n)
-R[lower.tri(R, diag = TRUE)] <- dados
-R <- R + t(R) - diag(diag(R))
+
+R <- matrix(0, n, n, byrow = TRUE)
+
+R[upper.tri(R, diag = TRUE)] <- dados
+R[lower.tri(R)] <- t(R)[lower.tri(R)]
 R
 
 ## Calculando o traço e o determinante da matriz de  correlações R:

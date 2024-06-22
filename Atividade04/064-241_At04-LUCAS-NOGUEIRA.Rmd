@@ -5,6 +5,7 @@ date: "28/05/2024"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 # Lista de Exercícios
@@ -171,27 +172,31 @@ Com base nas observações feitas a partir do gráfico, podemos levantar algumas
 3. **Migrações e Misturas Populacionais**:
    - A chegada de novas populações e a mistura genética com grupos locais podem ter introduzido novas características físicas, resultando em mudanças observáveis nas medidas dos crânios.
 
+\qquad
+
 ## 3) Operações com os comandos `scan()` e `lower.tri()`.
 
 ```{r}
   dados <- scan("E9-14.DAT")
   dados
+# Número de variáveis
+n <- 6
 
-  n <- 6
-  R <- matrix(0, n, n)
-  R[lower.tri(R, diag = TRUE)] <- dados
-  R <- R + t(R) - diag(diag(R))
-  R
+# Criar uma matriz vazia de 6x6
+R <- matrix(0, n, n, byrow = TRUE)
+
+# Preencher a matriz com os dados fornecidos
+R[upper.tri(R, diag = TRUE)] <- dados
+R[lower.tri(R)] <- t(R)[lower.tri(R)]
+R
 ```
 
+\newpage
 * a) Calculando o traço e o determinante da matriz de  correlações R:
 
 ```{r}
-  traco <- sum(diag(R))
-  traco                      # Traço da matriz R.
-
-  determinante <- det(R)
-  determinante               # Determinante da matriz R.
+  (traco <- sum(diag(R)))                # Traço da matriz R.
+  (determinante <- det(R))               # Determinante da matriz R.
 ```
 
 
@@ -199,25 +204,16 @@ Com base nas observações feitas a partir do gráfico, podemos levantar algumas
 
 ```{r}
   eigen_ <- eigen(R)
-
-  autovetores <- eigen_$vectors
-  autovetores                # Autovetores da matriz R.
-
+  (autovetores <- eigen_$vectors)        # Autovetores da matriz R.
   proporcao_autovetores <- autovetores / sum(autovetores)
-  proporcao_autovetores      # Proporção de cada autovetor em relação ao traço.
+  proporcao_autovetores                  # Proporção em relação ao traço.
 ```
 
 * c) Comparando o traço da matriz R com a soma de seus autovalores e o determinante da matriz R com o produto de seus autovalores:
 
 ```{r}
-  autovalores <- eigen_$values
-  autovalores                # Autovalores da matriz R.
-
-  soma_autovalores <- sum(autovalores)
-
-  soma_autovalores           # Soma dos autovalores da matriz R.
-
-  traco                      # Traço.
+  (autovalores <- eigen_$values); (soma_autovalores <- sum(autovalores)) # Autovalores e soma.
+  traco                                  # Traço.
 ```
 
 \newpage

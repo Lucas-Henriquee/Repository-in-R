@@ -1856,29 +1856,33 @@ mudanças observáveis nas medidas dos crânios.</li>
   dados</code></pre>
 <pre><code>##  [1] 1.000 0.505 1.000 0.569 0.422 1.000 0.602 0.467 0.926 1.000 0.621 0.482
 ## [13] 0.877 0.874 1.000 0.603 0.450 0.878 0.894 0.937 1.000</code></pre>
-<pre class="r"><code>  n &lt;- 6
-  R &lt;- matrix(0, n, n)
-  R[lower.tri(R, diag = TRUE)] &lt;- dados
-  R &lt;- R + t(R) - diag(diag(R))
-  R</code></pre>
+<pre class="r"><code># Número de variáveis
+n &lt;- 6
+
+# Criar uma matriz vazia de 6x6
+R &lt;- matrix(0, n, n, byrow = TRUE)
+
+# Preencher a matriz com os dados fornecidos
+R[upper.tri(R, diag = TRUE)] &lt;- dados
+R[lower.tri(R)] &lt;- t(R)[lower.tri(R)]
+R</code></pre>
 <pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
-## [1,] 1.000 0.505 1.000 0.569 0.422 1.000
-## [2,] 0.505 0.602 0.467 0.926 1.000 0.621
-## [3,] 1.000 0.467 0.482 0.877 0.874 1.000
-## [4,] 0.569 0.926 0.877 0.603 0.450 0.878
-## [5,] 0.422 1.000 0.874 0.450 0.894 0.937
-## [6,] 1.000 0.621 1.000 0.878 0.937 1.000</code></pre>
+## [1,] 1.000 0.505 0.569 0.602 0.621 0.603
+## [2,] 0.505 1.000 0.422 0.467 0.482 0.450
+## [3,] 0.569 0.422 1.000 0.926 0.877 0.878
+## [4,] 0.602 0.467 0.926 1.000 0.874 0.894
+## [5,] 0.621 0.482 0.877 0.874 1.000 0.937
+## [6,] 0.603 0.450 0.878 0.894 0.937 1.000</code></pre>
+<div style="page-break-after: always;"></div>
 <ul>
 <li><ol style="list-style-type: lower-alpha">
 <li>Calculando o traço e o determinante da matriz de correlações R:</li>
 </ol></li>
 </ul>
-<pre class="r"><code>  traco &lt;- sum(diag(R))
-  traco                      # Traço da matriz R.</code></pre>
-<pre><code>## [1] 4.581</code></pre>
-<pre class="r"><code>  determinante &lt;- det(R)
-  determinante               # Determinante da matriz R.</code></pre>
-<pre><code>## [1] -0.003203283</code></pre>
+<pre class="r"><code>  (traco &lt;- sum(diag(R)))                # Traço da matriz R.</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>  (determinante &lt;- det(R))               # Determinante da matriz R.</code></pre>
+<pre><code>## [1] 0.00116952</code></pre>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>Calculando os autovetores com o comando <code>eigen()</code> e
@@ -1886,40 +1890,34 @@ calculando a proporção com o traço da matriz R:</li>
 </ol></li>
 </ul>
 <pre class="r"><code>  eigen_ &lt;- eigen(R)
-
-  autovetores &lt;- eigen_$vectors
-  autovetores                # Autovetores da matriz R.</code></pre>
-<pre><code>##            [,1]       [,2]        [,3]        [,4]       [,5]       [,6]
-## [1,] -0.4015955 -0.6371302  0.05483421  0.59510400  0.1226489  0.2461462
-## [2,] -0.3585478  0.4943056 -0.32820518  0.44825273  0.3108216 -0.4710056
-## [3,] -0.4165466 -0.1895583  0.08716712 -0.12999925 -0.6985779 -0.5273021
-## [4,] -0.3783777  0.0773746 -0.71295188 -0.26526987 -0.1989951  0.4822613
-## [5,] -0.4033048  0.5265168  0.57722480  0.09536667 -0.1747784  0.4327753
-## [6,] -0.4804467 -0.1748942  0.20046849 -0.59038802  0.5746212 -0.1401708</code></pre>
+  (autovetores &lt;- eigen_$vectors)        # Autovetores da matriz R.</code></pre>
+<pre><code>##            [,1]       [,2]        [,3]        [,4]        [,5]        [,6]
+## [1,] -0.3507933  0.3956532  0.84666989  0.05182494 -0.01451715 -0.02561535
+## [2,] -0.2862040  0.8146406 -0.50202982  0.02010032 -0.01468155 -0.04236155
+## [3,] -0.4399784 -0.2632446 -0.11051604  0.50466755 -0.59955835 -0.33278818
+## [4,] -0.4468851 -0.1972029 -0.09896293  0.47037458  0.59797472  0.41567414
+## [5,] -0.4488806 -0.1614667 -0.06586761 -0.54823826 -0.36866442  0.57586240
+## [6,] -0.4474933 -0.2134503 -0.06906640 -0.46947138  0.38290503 -0.61838409</code></pre>
 <pre class="r"><code>  proporcao_autovetores &lt;- autovetores / sum(autovetores)
-  proporcao_autovetores      # Proporção de cada autovetor em relação ao traço.</code></pre>
-<pre><code>##           [,1]        [,2]        [,3]        [,4]        [,5]        [,6]
-## [1,] 0.1707350  0.27087069 -0.02331232 -0.25300361 -0.05214318 -0.10464703
-## [2,] 0.1524337 -0.21014999  0.13953376 -0.19057099 -0.13214328  0.20024417
-## [3,] 0.1770914  0.08058917 -0.03705839  0.05526812  0.29699472  0.22417819
-## [4,] 0.1608642 -0.03289518  0.30310568  0.11277732  0.08460113 -0.20502947
-## [5,] 0.1714618 -0.22384434 -0.24540241 -0.04054436  0.07430559 -0.18399090
-## [6,] 0.2042580  0.07435483 -0.08522754  0.25099865 -0.24429551  0.05959246</code></pre>
+  proporcao_autovetores                  # Proporção em relação ao traço.</code></pre>
+<pre><code>##           [,1]        [,2]        [,3]         [,4]         [,5]        [,6]
+## [1,] 0.1702901 -0.19206700 -0.41100980 -0.025158045  0.007047247  0.01243479
+## [2,] 0.1389357 -0.39546140  0.24370676 -0.009757554  0.007127053  0.02056411
+## [3,] 0.2135843  0.12779020  0.05364921 -0.244987227  0.291051283  0.16154962
+## [4,] 0.2169372  0.09573075  0.04804084 -0.228339954 -0.290282522 -0.20178602
+## [5,] 0.2179059  0.07838283  0.03197496  0.266138312  0.178965489 -0.27954825
+## [6,] 0.2172324  0.10361793  0.03352778  0.227901501 -0.185878488  0.30019010</code></pre>
 <ul>
 <li><ol start="3" style="list-style-type: lower-alpha">
 <li>Comparando o traço da matriz R com a soma de seus autovalores e o
 determinante da matriz R com o produto de seus autovalores:</li>
 </ol></li>
 </ul>
-<pre class="r"><code>  autovalores &lt;- eigen_$values
-  autovalores                # Autovalores da matriz R.</code></pre>
-<pre><code>## [1]  4.64434262  0.76239062  0.26708573 -0.01614753 -0.25542499 -0.82124645</code></pre>
-<pre class="r"><code>  soma_autovalores &lt;- sum(autovalores)
-
-  soma_autovalores           # Soma dos autovalores da matriz R.</code></pre>
-<pre><code>## [1] 4.581</code></pre>
-<pre class="r"><code>  traco                      # Traço.</code></pre>
-<pre><code>## [1] 4.581</code></pre>
+<pre class="r"><code>  (autovalores &lt;- eigen_$values); (soma_autovalores &lt;- sum(autovalores)) # Autovalores e soma.</code></pre>
+<pre><code>## [1] 4.45644850 0.78240991 0.45842506 0.16883257 0.07908774 0.05479622</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>  traco                                  # Traço.</code></pre>
+<pre><code>## [1] 6</code></pre>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="conjunto-de-dados-carsdatasets." class="section level2">
