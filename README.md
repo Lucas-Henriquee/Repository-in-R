@@ -79,7 +79,7 @@ A linguagem R é amplamente reconhecida por suas capacidades em análise estatí
 - **Código Desenvolvido:** O código completo deste trabalho pode ser acessado na pasta [Trabalho 04](Trabalhos/Atividade04).
 
 #### Trabalho 5:  Uso do Pacote ggplot2
-- **Resumo:** Este trabalho explora a criação de gráficos usando o pacote ggplot2 em R, focando em diferentes técnicas de visualização de dados. As atividades incluem adicionar texto a gráficos, construir diagramas de dispersão, personalizar símbolos de dados, e criar gráficos complexos como gráficos de área e densidade. Através do conjunto de dados gapminder, mtcars, e diamonds, os alunos são instruídos a aplicar e combinar múltiplas funções do ggplot2 para manipular e personalizar visualizações. O trabalho envolve a criação de relatórios em formato R Markdown (.html ou .pdf), que devem ser entregues até a data limite especificada.
+- **Resumo:** Este trabalho envolve a utilização de funções de ajuste de modelos e análise de regressão em R. São explorados métodos de ajuste de modelos lineares simples, análise de resíduos e interpretação dos resultados. Além disso, o trabalho foca na criação de gráficos para visualização dos ajustes e interpretação dos coeficientes estimados.
 - **Código Desenvolvido:** O código completo deste trabalho pode ser acessado na pasta [Trabalho 05](Trabalhos/Atividade05).
 
 ##### Observação: Todas as atividades de trabalhos foram compiladas em arquivos .html e .pdf.
