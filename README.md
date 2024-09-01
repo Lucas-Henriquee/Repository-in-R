@@ -15,47 +15,48 @@ A linguagem R é amplamente reconhecida por suas capacidades em análise estatí
 - **Código Desenvolvido:** O código completo desta aula pode ser acessado na pasta [Aula 01](Aulas/Aula01_20240317).
 
 #### Aula 2: R como Calculadora
-- **Resumo:** Exploração das capacidades do R como uma poderosa calculadora. Nesta aula, são abordadas operações aritméticas básicas, potências, raízes, notação científica, funções exponenciais e logarítmicas, cálculo de módulos, truncamento, arredondamento e a ordem de precedência das operações.
+- **Resumo:** Exploração das capacidades do R como uma poderosa calculadora. São abordadas operações aritméticas básicas, potências, raízes, notação científica, funções exponenciais e logarítmicas, cálculo de módulos, truncamento, arredondamento e a ordem de precedência das operações.
 - **Código Desenvolvido:** O código completo desta aula pode ser acessado na pasta [Aula 02](Aulas/Aula02_20240318).
 
 #### Aula 3 e 4: Trabalhando com Vetores e Operações Avançadas em R
-- **Resumo:** Introdução à manipulação de vetores em R, uma das estruturas de dados mais fundamentais na linguagem. Exploramos a criação, manipulação e operações com vetores, incluindo soma, multiplicação e produtos escalares. Também abordamos a criação de gráficos simples a partir de vetores e o uso de loops para cálculo de somas e produtos. Por fim, discutimos o uso de arquivos de script e funções externas para organização do código.
+- **Resumo:**  Introdução à manipulação de vetores em R, uma das estruturas de dados mais fundamentais na linguagem. Explore a criação, manipulação e operações com vetores, incluindo soma, multiplicação e produtos escalares. Também crie gráficos simples a partir de vetores e utilize loops para calcular somas e produtos. Por fim, aprenda a usar arquivos de script e funções externas para organizar o código.
 - **Código Desenvolvido:** O código completo destas aulas pode ser acessado na pasta [Aula 03](Aulas/Aula03_20240325) e [Aula 04](Aulas/Aula04_20240408).
 
 #### Aula 5: Análise Estatística Descritiva
 - **Resumo:** **(Aula não disponível no repositório)**.
 
 #### Aula 6: Manipulação de Strings e Análise Estatística com Pacotes
-- **Resumo:** Nesta aula, exploramos funções de manipulação de strings em R, como `paste` e `paste0`, para concatenar e formatar texto. Também aprendemos a instalar e carregar pacotes, como `ISwR` e `ggplot2`, e a utilizar funções desses pacotes para análise de dados. A aula inclui a análise de dados de diamantes com gráficos e modelos lineares, bem como a criação de histogramas e a análise de assimetria dos dados gerados.
+- **Resumo:**  Explore funções de manipulação de strings em R, como `paste` e `paste0`, para concatenar e formatar texto. Aprenda a instalar e carregar pacotes, como `ISwR` e `ggplot2`, e utilize funções desses pacotes para análise de dados. A aula inclui a análise de dados de diamantes com gráficos e modelos lineares, bem como a criação de histogramas e a análise de assimetria dos dados gerados.
 - **Código Desenvolvido:** O código completo desta aula pode ser acessado na pasta [Aula 06](Aulas/Aula06_20240422).
 
 
 #### Aula 7: Operadores Lógicos e Análise Estatística
-- **Resumo:** Nesta aula, exploramos operadores lógicos e relacionais em R para filtrar e manipular dados. Utilizamos funções para verificar condições, calcular quantidades e probabilidades associadas a essas condições, e realizar análises estatísticas básicas. A aula inclui a criação de amostras aleatórias, a aplicação de filtros lógicos, e a análise de valores extremos e distribuições usando funções como `pnorm` e `qnorm`. Também discutimos como visualizar e manipular números complexos e como criar gráficos com escala igual.
+- **Resumo:** Explore operadores lógicos e relacionais em R para filtrar e manipular dados. Utilize funções para verificar condições, calcular quantidades e probabilidades associadas a essas condições, e realizar análises estatísticas básicas. A aula inclui a criação de amostras aleatórias, a aplicação de filtros lógicos, e a análise de valores extremos e distribuições usando funções como `pnorm` e `qnorm`. Também visualize e manipule números complexos e crie gráficos com escala igual.omplexos e como criar gráficos com escala igual.
 - **Código Desenvolvido:** O código completo desta aula pode ser acessado na pasta [Aula 07](Aulas/Aula07_20240506).
 
 #### Aula 8: Infinito, Matrizes e Arrays
-- **Resumo:** Nesta aula, abordamos conceitos relacionados a infinitos e cálculos com grandes números em R, incluindo operações com fatoriais e a função gama para cálculos de números grandes. Exploramos também a manipulação de valores indeterminados e a gestão de valores `NA`. Em seguida, focamos na criação e manipulação de matrizes e arrays, realizando operações básicas, como a criação de matrizes e a aplicação de funções em matrizes. Finalmente, trabalhamos com diferentes tipos de dados, como o conjunto de dados `iris`, e exploramos a tabela de contingência com o conjunto de dados `Titanic` e as análises de `mtcars`.
+- **Resumo:**  Aborde conceitos relacionados a infinitos e cálculos com grandes números em R, incluindo operações com fatoriais e a função gama para cálculos de números grandes. Manipule valores indeterminados e aprenda a gerenciar valores `NA`. Em seguida, foque na criação e manipulação de matrizes e arrays, realizando operações básicas, como a criação de matrizes e a aplicação de funções em matrizes. Finalmente, trabalhe com diferentes tipos de dados, como o conjunto de dados `iris`, e explore a tabela de contingência com o conjunto de dados `Titanic` e as análises de `mtcars`.
 - **Código Desenvolvido:** O código completo desta aula pode ser acessado na pasta [Aula 08](Aulas/Aula08_20240513).
 
 #### Aula 9: Fatores, Listas e Data Frames
-- **Resumo:** Nesta aula, exploramos conceitos importantes relacionados a fatores, listas e data frames em R. Começamos com a criação e manipulação de fatores para variáveis categóricas, alterando níveis e ordenando fatores. Em seguida, abordamos as listas, mostrando como criar e acessar seus elementos, e como manipular dados com `sample` e `table`. Na seção sobre data frames, fizemos uso do conjunto de dados `iris` para criar gráficos, inserir novas variáveis e realizar operações básicas. Também aprendemos a ordenar dados, a criar e exportar data frames e a usar funções gráficas para análise de dados. Por fim, abordamos o uso da função `sink` para exportar resultados de análises para arquivos de texto.
+- **Resumo:** Explore conceitos importantes relacionados a fatores, listas e data frames em R. Comece com a criação e manipulação de fatores para variáveis categóricas, altere níveis e ordene fatores. Em seguida, crie e acesse elementos em listas, e manipule dados com `sample` e `table`. Na seção sobre data frames, utilize o conjunto de dados `iris` para criar gráficos, inserir novas variáveis e realizar operações básicas. Aprenda a ordenar dados, a criar e exportar data frames e a usar funções gráficas para análise de dados. Por fim, utilize a função `sink` para exportar resultados de análises para arquivos de texto.
 - **Código Desenvolvido:** O código completo desta aula está disponível na pasta [Aula 09](Aulas/Aula09_20240517).
 
 
-#### Aula 10: Importação, Plot de Dados e e^x
-- **Resumo:** Nesta aula, abordamos a importação de dados em R a partir de diferentes formatos e separadores, como `.txt`, `.csv`, e URLs. Exploramos a manipulação de dados importados, realizando operações básicas e criando gráficos. Em seguida, focamos na função exponencial \( e^x \), realizando integrações e aproximando o valor de \( e \) por meio de séries de Taylor. Também analisamos o conjunto de dados `mtcars`, realizando análises de regressão e criando gráficos com diferentes variáveis. Finalizamos com a utilização de gráficos de dispersão e agregações de dados, e discutimos a importância de entender a estrutura dos dados ao importar e manipular informações.
+#### Aula 10: Importação, Plot de Dados e  $e^x$ 
+- **Resumo:** Aborde a importação de dados em R a partir de diferentes formatos e separadores, como `.txt`, `.csv`, e `URLs`. Manipule os dados importados, realizando operações básicas e criando gráficos. Em seguida, foque na função exponencia  $e^x$, realizando integrações e aproximando o valor de 
+`𝑒` por meio de séries de Taylor. Analise o conjunto de dados `mtcars`, realizando análises de regressão e criando gráficos com diferentes variáveis. Finalize com a utilização de gráficos de dispersão e agregações de dados, discutindo a importância de entender a estrutura dos dados ao importar e manipular informações.
 
 - **Código Desenvolvido:** O código completo desta aula está disponível na pasta [Aula 10](Aulas/Aula10_20240520).
 
 #### Aula 11: Amostragem e Comando `sample()`
-- **Resumo:** Nesta aula, exploramos a amostragem em R utilizando o comando `sample()`, abordando amostragem com e sem reposição. Iniciamos com amostragens simples do conjunto de dados `iris`, comparando amostras com e sem repetição. Em seguida, analisamos o conjunto de dados `diamonds` do pacote `ggplot2`, realizando amostragem, cálculo de estatísticas básicas e correlação. Criamos uma função personalizada para gerar amostras e calcular estatísticas, repetimos o processo múltiplas vezes para analisar distribuições. Finalmente, realizamos uma atividade extra para explorar a probabilidade de aniversários no mesmo dia em um grupo de pessoas.
+- **Resumo:** Explore a amostragem em R utilizando o comando `sample()`, abordando amostragem com e sem reposição. Comece com amostragens simples do conjunto de dados `iris`, comparando amostras com e sem repetição. Em seguida, analise o conjunto de dados `diamonds` do pacote `ggplot2`, realizando amostragem, cálculo de estatísticas básicas e correlação. Crie uma função personalizada para gerar amostras e calcular estatísticas, repetindo o processo múltiplas vezes para analisar distribuições.
 
 - **Código Desenvolvido:** O código completo desta aula está disponível na pasta [Aula 11](Aulas/Aula11_20240715).
 
 
 #### Aula 12: Probabilidade de Aniversário e Formatação de Datas
-- **Resumo:** Nesta aula, exploramos a probabilidade de coincidência de aniversários utilizando o conceito do "Problema do Aniversário". Implementamos funções para calcular a probabilidade de coincidências e utilizamos a função `replicate()` para realizar simulações e obter estimativas. Além disso, abordamos a formatação e manipulação de datas em R, utilizando funções para extrair e formatar diferentes componentes das datas.
+- **Resumo:** Explore a probabilidade de coincidência de aniversários utilizando o conceito do "Problema do Aniversário". Implemente funções para calcular a probabilidade de coincidências e utilize a função `replicate()` para realizar simulações e obter estimativas. Além disso, aborde a formatação e manipulação de datas em R, utilizando funções para extrair e formatar diferentes componentes das datas.
 
 - **Código Desenvolvido:** O código completo desta aula está disponível na pasta [Aula 12](Aulas/Aula12_20240826).
 
