@@ -93,7 +93,7 @@ A linguagem R é amplamente reconhecida por suas capacidades em análise estatí
    - **VSCode**: Outra ótima opção com suporte para R via extensões. Baixe em [VSCode](https://code.visualstudio.com/).
 3. **Clone o Repositório**: `git clone https://github.com/Lucas-Henriquee/Repository-in-R.git`
 
-4. **Explore os Exemplos**: Navegue pelos exemplos e tutoriais incluídos para entender melhor como utilizar R para análise de dados.
+4. **Explore os Exemplos**: Navegue pelas aulas e trabalhos incluídos nesse repositório para entender melhor como utilizar R para análise de dados.
 
 ## 🛠️ Contribuição
 
